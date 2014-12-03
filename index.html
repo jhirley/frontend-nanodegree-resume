@@ -45,8 +45,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 </head>
 <body unresolved>
   <div id="main">
-  Hello world!   <!-- You'll be deleting this line in the course -->
-
+    
     <!--
     Everything from here to the <script> tag below is the skeleton of your
     website. Your code will add information to each of the sections of the
@@ -111,12 +110,58 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 
 
   if(document.getElementsByClassName("flex-item").length === 0) {
-    document.getElementById("topContacts").style.display = "none";
+    document.getElementById("topContacts").style.backgroundColor== "black";
   }
   if(document.getElementsByTagName("h1").length === 0) {
-    document.getElementById("header").style.display = "none";
+    document.getElementById("header").style.backgroundColor== "black";
   }
   if(document.getElementsByClassName("work-entry").length === 0) {
+    document.getElementById("workExperience").style.backgroundColor== "black";
+  }
+  if(document.getElementsByClassName("project-entry").length === 0) {
+    document.getElementById("projects").style.backgroundColor== "black";
+  }
+  if(document.getElementsByClassName("education-entry").length === 0) {
+    document.getElementById("education").style.backgroundColor== "black";
+  }
+  if(document.getElementsByClassName("skills-entry").length === 0) {
+    document.getElementById("skillsChart").style.backgroundColor== "black";
+  }
+  if(document.getElementsByClassName("flex-item").length === 0) {
+    document.getElementById("letsConnect").style.backgroundColor== "black";
+  }
+  if(document.getElementById("map") == undefined) {
+    document.getElementById("mapDiv").style.backgroundColor== "black";
+  }
+
+  if (typeof(bio.skills) !== "undefined" ) 
+    {
+      $("#header").append(HTMLskillsStart);
+      for ( i in bio.skills)
+        {
+          $("#skills").append(HTMLskills.replace("%data%",bio.skills[i]));
+        }
+    }
+  if (typeof(work.jobs) !== "undefined" ) 
+    {
+      $("#workExperience").append(HTMLworkStart);
+      for ( i in work.jobs)
+        {
+          $(".work-entry:last").append(HTMLworkEmployer.replace("%data%",work.jobs[i]["employer"]));
+          $(".work-entry:last").append(HTMLworkTitle.replace("%data%",work.jobs[i].position));
+          $(".work-entry:last").append(HTMLworkDates.replace("%data%",work.jobs[i].dates));
+          $(".work-entry:last").append(HTMLworkLocation.replace("%data%",work.jobs[i]["location"]));
+          $(".work-entry:last").append(HTMLworkDescription.replace("%data%",work.jobs[i]["description"]));
+
+
+        }
+    }
+
+  </script>
+</body>
+
+/*
+ if(document.getElementsByClassName("work-entry").length === 0) {
     document.getElementById("workExperience").style.display = "none";
   }
   if(document.getElementsByClassName("project-entry").length === 0) {
@@ -133,6 +178,4 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   }
   if(document.getElementById("map") == undefined) {
     document.getElementById("mapDiv").style.display = "none";
-  }
-  </script>
-</body>
+*/
