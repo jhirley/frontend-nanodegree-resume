@@ -23,7 +23,7 @@ var formatedRole = HTMLheaderRole.replace("%data%",bio.role);
 var work ={};
 work.position = "Technical Sales Consultant Wireline 2";
 work.employers= "AT&T";
-work.year=15;
+work.year="2001-2009 : 2011-Present";
 
 
 var education ={

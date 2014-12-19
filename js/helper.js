@@ -49,6 +49,7 @@ var HTMLschoolDates = "<div class='date-text'>%data%</div>";
 var HTMLschoolLocation = "<div class='location-text'>%data%</div>";
 var HTMLschoolMajor = "<em><br>Major: %data%</em>"
 
+
 var HTMLonlineClasses = "<h3>Online Classes</h3>";
 var HTMLonlineTitle = "<a href='#'>%data%";
 var HTMLonlineSchool = " - %data%</a>";
@@ -127,7 +128,7 @@ function initializeMap() {
 
     // adds the single location property from bio to the locations array
     locations.push(bio.contacts.location);
-    
+     
     // iterates through school locations and appends each location to
     // the locations array
     for (var school in education.schools) {
@@ -152,7 +153,27 @@ function initializeMap() {
 
     // The next lines save location data from the search result object to local variables
     var lat = placeData.geometry.location.k;  // latitude from the place service
-    var lon = placeData.geometry.location.B;  // longitude from the place service
+//    var lon = placeData.geometry.location.B;  // longitude from the place service
+    var lon = placeData.geometry.location.D;  // longitude from the place service
+/*
+
+Dawoon Choi, from Cohort 1 (and who is likely to be the first nanodegree graduate, I believe) found out what is causing this, and how to fix it. He posted this on HipChat:
+
+Hey, those who having an issue with the map display for P2 or other projects
+
+(grey screen map, Uncaught RangeError: Maximum call stack size exceeded)
+It seems Google has changed the key name for place data object, so you need to change the name accordingly.
+For P2, Interactive Resume project, go to the line 153 in helper.js file. Then you'll find a code like this:
+    var lon = placeData.geometry.location.B;
+The "B" at the end is a key name for longitude data of the location, and this name has changed to "D".
+
+So you need to change the code as following:
+    var lon = placeData.geometry.location.D;
+I don't know why google changed this, so this might be changed back to way it was in the future.
+
+When this happens, your map might display grey screen again.
+
+*/
     var name = placeData.formatted_address;   // name of the place from the place service
     var bounds = window.mapBounds;            // current boundaries of the map window
 
@@ -173,6 +194,9 @@ function initializeMap() {
     // hmmmm, I wonder what this is about...
     google.maps.event.addListener(marker, 'click', function() {
       // your code goes here!
+
+      infoWindow.open(map,marker);  // added by jfonte https://developers.google.com/maps/documentation/javascript/infowindows#add
+
     });
 
     // this is where the pin actually gets added to the map.
@@ -235,11 +259,11 @@ Uncomment all the code below when you're ready to implement a Google Map!
 */
 
 // Calls the initializeMap() function when the page loads
-//window.addEventListener('load', initializeMap);
+window.addEventListener('load', initializeMap);
 
 // Vanilla JS way to listen for resizing of the window 
 // and adjust map bounds
-//window.addEventListener('resize', function(e) {
+window.addEventListener('resize', function(e) {
   // Make sure the map bounds get updated on page resize
-//  map.fitBounds(mapBounds);
-//});
+  map.fitBounds(mapBounds);
+});

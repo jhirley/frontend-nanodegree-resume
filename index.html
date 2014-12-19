@@ -39,7 +39,7 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   Uncomment the <script> tag below when you're ready to add an interactive
   Google Map to your resume!
   -->
-  <!-- <script type="text/javascript" src="http://maps.googleapis.com/maps/api/js?libraries=places"></script> -->
+   <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?libraries=places"></script>
 
   <meta name="viewport" content="width=device-width">
 </head>
@@ -134,48 +134,6 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     document.getElementById("mapDiv").style.backgroundColor== "black";
   }
 
-  if (typeof(bio.skills) !== "undefined" ) 
-    {
-      $("#header").append(HTMLskillsStart);
-      for ( i in bio.skills)
-        {
-          $("#skills").append(HTMLskills.replace("%data%",bio.skills[i]));
-        }
-    }
-  if (typeof(work.jobs) !== "undefined" ) 
-    {
-      $("#workExperience").append(HTMLworkStart);
-      for ( i in work.jobs)
-        {
-          $(".work-entry:last").append(HTMLworkEmployer.replace("%data%",work.jobs[i]["employer"]));
-          $(".work-entry:last").append(HTMLworkTitle.replace("%data%",work.jobs[i].position));
-          $(".work-entry:last").append(HTMLworkDates.replace("%data%",work.jobs[i].dates));
-          $(".work-entry:last").append(HTMLworkLocation.replace("%data%",work.jobs[i]["location"]));
-          $(".work-entry:last").append(HTMLworkDescription.replace("%data%",work.jobs[i]["description"]));
-
-
-        }
-    }
-
   </script>
 </body>
 
-/*
- if(document.getElementsByClassName("work-entry").length === 0) {
-    document.getElementById("workExperience").style.display = "none";
-  }
-  if(document.getElementsByClassName("project-entry").length === 0) {
-    document.getElementById("projects").style.display = "none";
-  }
-  if(document.getElementsByClassName("education-entry").length === 0) {
-    document.getElementById("education").style.display = "none";
-  }
-  if(document.getElementsByClassName("skills-entry").length === 0) {
-    document.getElementById("skillsChart").style.display = "none";
-  }
-  if(document.getElementsByClassName("flex-item").length === 0) {
-    document.getElementById("letsConnect").style.display = "none";
-  }
-  if(document.getElementById("map") == undefined) {
-    document.getElementById("mapDiv").style.display = "none";
-*/
