@@ -15,7 +15,9 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
 <scripts> for JavaScript files to build interactions.
 -->
 <head>
+  <script src="http://d3js.org/d3.v3.min.js"></script>
   <link href="css/style.css" rel="stylesheet" type="text/css"></link>
+  <link rel="stylesheet" type="text/css" href="css/skill.css"/>
 
   <!--
   jQuery is a common JavaScript library for reading and making changes to the
@@ -67,6 +69,16 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
     </div>
     <div id="skillsChart">
       <h2>Skills Chart</h2>
+      <div id="skills">
+        <div id="skillmap">
+          <div class="skills-wrapper">
+            <div class="skills-sunburst"></div>
+            <div class="skills-chart">
+              <div id="skills-chart-breadcrumb"></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
     <div id="mapDiv">
       <h2>Where I've Lived and Worked</h2>
@@ -133,7 +145,11 @@ need to load. You'll see a lot of <link>s to CSS files for styles and
   if(document.getElementById("map") == undefined) {
     document.getElementById("mapDiv").style.backgroundColor== "black";
   }
-
+  </script>
+  <script type="text/javascript" src="js/skill.js"></script>
+    <script type="text/javascript">
+      // Hack to make this example display correctly in an iframe on bl.ocks.org
+      d3.select(self.frameElement).style("height", "700px");
   </script>
 </body>
 
